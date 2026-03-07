@@ -238,6 +238,7 @@ ${CROSS}gcc main.c -Iinclude -Lbuild -lmylib -o test_shared_arm
 ```
 - Kết quả:
 <img width="1080" height="1440" alt="image" src="https://github.com/user-attachments/assets/bb690df2-4143-43c1-9271-1720936ad71f" />
+
 ### Bước 10: So sánh kích thước chương trình
 ```bash
 ls -lh test_static_arm
