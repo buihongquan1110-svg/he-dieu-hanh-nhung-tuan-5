@@ -254,5 +254,6 @@ readelf -d test_shared_arm
 - Trong test_shared_arm sẽ thấy:
 ```bash
 NEEDED libmylib.so
+```
 - Điều này cho thấy chương trình phụ thuộc vào shared library.
 
