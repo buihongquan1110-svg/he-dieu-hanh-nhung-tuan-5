@@ -1,6 +1,6 @@
 # BÀI TẬP TUẦN 5 MÔN HỆ ĐIỀU HÀNH NHÚNG
 
-# BÀI 1: Viết 1 chương trình C/C++ có sử dụng thư viện cJSON
+## BÀI 1: Viết 1 chương trình C/C++ có sử dụng thư viện cJSON
 ## MỤC TIÊU CỦA BÀI
 - Build Buildroot có tích hợp thư viện cJSON
 - Viết chương trình HelloJSON.c
