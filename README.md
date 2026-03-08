@@ -122,6 +122,10 @@ Truong: PTIT
 
 <img width="1927" height="2560" alt="image" src="https://github.com/user-attachments/assets/de4965f9-8345-4582-aa25-a4773f0bea30" />
 
+- Kết quả thu được sau khi test trên BBB:
+<img width="1230" height="923" alt="image" src="https://github.com/user-attachments/assets/6652f6e2-39ee-4851-b4dd-74d7a207d7a3" />
+
+
 # B Bài 2: Tự tạo thư viện cá nhân
 ## MỤC TIÊU CỦA BÀI
 - Hiểu được cách tạo thư viện trong C/C++
@@ -257,4 +261,88 @@ readelf -d test_shared_arm
 NEEDED libmylib.so
 ```
 - Điều này cho thấy chương trình phụ thuộc vào shared library.
+
+# C Bài 3: Tích hợp ứng dụng và thư viện vào Buildroot
+## MỤC TIÊU CỦA BÀI
+- Tích hợp thư viện cJSON vào buildroot
+- Tích hợp thư viện tự xây dựng (thanh_math_lib) vào Buildroot
+- Xây dựng một chương trình C sử dụng đồng thời hai thư viện
+- Cấu hình dependency trong Buildroot để khi bật ứng dụng thì các thư viện cần thiết tự động được kích hoạt
+- Biên dịch và chạy chương trình thành công trên hệ thống Buildroot
+
+## 1. CẤU TRÚC PACKAGE TRONG BUILDROOT
+- Trong thư mục package tạo hai package:
+```bash
+package/
+ ├── thanh_math_lib
+ │   ├── Config.in
+ │   ├── thanh_math_lib.mk
+ │   └── src
+ │        ├── thanh_math.c
+ │        └── thanh_math.h
+ │
+ └── thanh_app
+     ├── Config.in
+     ├── thanh_app.mk
+     └── src
+          └── main.c
+```
+- Trong đó:
+
+thanh_math_lib : thư viện tự xây dựng (Bài 2)
+
+thanh_app : chương trình sử dụng thư viện (Bài 3)
+
+## 2. CẤU HÌNH BUILDROOT
+- Mở menu cấu hình:
+```bash
+make menuconfig
+```
+- Enable các package:
+```bash
+Target packages
+    Libraries
+        JSON/XML
+            [*] cJSON
+
+Target packages
+    [*] thanh_math_lib
+    [*] thanh_app
+```
+## 3. Biên dịch hệ thống
+- Chạy lệnh:
+```bash
+make hoặc make -j2
+```
+- Trong quá trình build xuất hiện các bước:
+```bash
+>>> thanh_math_lib 1.0 Installing to target
+>>> thanh_app 1.0 Syncing from source dir
+>>> thanh_app 1.0 Configuring
+>>> thanh_app 1.0 Building
+>>> thanh_app 1.0 Installing to target
+```
+## 4. Kiểm tra file sau khi build
+```bash
+ls -lh output/target/usr/bin/thanh_app
+ls -lh output/target/usr/lib/libthanh_math.so
+```
+- Kết quả thu được ảnh dưới đây:
+<img width="1230" height="923" alt="image" src="https://github.com/user-attachments/assets/d42be813-5691-4150-9335-bf175f18a78f" />
+
+## 5. Chạy chương trình trên hệ thống
+- Đăng nhập:
+```bash
+buildroot login: root
+```
+- Chạy chương trình:
+```bash
+thanh_app
+```
+- Kết quả thu được ảnh dưới đây:
+<img width="1230" height="923" alt="image" src="https://github.com/user-attachments/assets/abebb478-c591-4790-a3be-6a8bcb268c5b" />
+
+
+
+
 
