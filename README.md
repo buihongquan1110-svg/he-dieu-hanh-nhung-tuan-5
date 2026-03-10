@@ -23,6 +23,8 @@ Target packages
             → [*] cjson
 ```
 - Chọn [*] cjson
+<img width="1920" height="1080" alt="Screenshot from 2026-03-10 15-09-13" src="https://github.com/user-attachments/assets/b223e150-8457-477c-a589-8901fc67f3e4" />
+
 - Thoát và Save
 
 ### Bước 3: Build lại hệ thống
