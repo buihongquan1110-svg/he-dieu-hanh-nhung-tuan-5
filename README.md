@@ -23,7 +23,7 @@ Target packages
             → [*] cjson
 ```
 - Chọn [*] cjson
-<img width="1920" height="1080" alt="Screenshot from 2026-03-10 15-09-13" src="https://github.com/user-attachments/assets/b223e150-8457-477c-a589-8901fc67f3e4" />
+<img width="1920" height="1080" alt="Screenshot from 2026-03-10 15-11-11" src="https://github.com/user-attachments/assets/59b348a7-7e83-4a10-bfbd-a086eb5b6faf" />
 
 - Thoát và Save
 
